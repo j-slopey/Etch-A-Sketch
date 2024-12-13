@@ -6,29 +6,37 @@ function getBoardSize() {
     return userInput;
 }
 
-const boardSize = getBoardSize();
-const board = document.querySelector("#board");
-const rowModel = document.createElement("div");
-const squareModel = document.createElement("div");
-rowModel.classList.add("row");
-squareModel.classList.add("square");
+function drawBoard(size) {
+    const board = document.querySelector("#board");
+    board.innerHTML = '';
+    const rowModel = document.createElement("div");
+    const squareModel = document.createElement("div");
+    rowModel.classList.add("row");
+    squareModel.classList.add("square");
 
-for(let i = 0; i < boardSize; i++){
+    for(let i = 0; i < size; i++){
 
-    rowModel.appendChild(squareModel.cloneNode(true));
+        rowModel.appendChild(squareModel.cloneNode(true));
+    }
+
+    for(let i = 0; i < size; i++){
+
+        board.appendChild(rowModel.cloneNode(true));
+    }
+
+    const squares = document.querySelectorAll(".square");
+    squares.forEach( (square) => {
+        square.addEventListener("mouseover",(e) => e.target.style.opacity = +e.target.style.opacity + 0.1 );
+    })
 }
 
-for(let i = 0; i < boardSize; i++){
-
-    board.appendChild(rowModel.cloneNode(true));
-}
-
-const squares = document.querySelectorAll(".square");
-squares.forEach( (square) => {
-    square.addEventListener("mouseover",(e) => e.target.style.opacity = +e.target.style.opacity + 0.1 );
-})
+let boardSize = getBoardSize();
+drawBoard(boardSize);
 
 const resetButton = document.querySelector("#clear");
-resetButton.addEventListener("click", () => squares.forEach((square) => square.style.background = "transparent"));
+resetButton.addEventListener("click", () => {
+    boardSize = getBoardSize();
+    drawBoard(boardSize);
+});
 
 

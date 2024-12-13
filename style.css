@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div {
+    display: flex;
+}
+
+#board {
+    height: 960px;
+    width: 960px;
+    background-color: lightgray;
+    justify-content: stretch;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    flex: 1;
+}
+.square {
+    border:1px solid black;
+    align-self: stretch;
+    flex: 1;
+}

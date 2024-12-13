@@ -31,6 +31,8 @@ h1 {
 }
 .square {
     border:1px solid black;
+    opacity: 0;
+    background-color: black;
     align-self: stretch;
     flex: 1;
 }
